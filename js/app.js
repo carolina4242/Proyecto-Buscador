@@ -16,13 +16,13 @@ const min = max - 10; // porque la agencia no quiere vender autos de mas de 10 a
 
 //generar un objeto con la busqueda
 const datosBusqueda = {
-    marca : ' ',
-    year : ' ',
-    minimo : ' ',
-    maximo : ' ',
-    puertas: ' ',
-    transmision : ' ',
-    color : ' ',
+    marca : '',
+    year : '',
+    minimo : '',
+    maximo : '',
+    puertas: '',
+    transmision : '',
+    color : '',
 }
 
 
@@ -49,13 +49,13 @@ year.addEventListener('change', e => {
 });
 
 maximo.addEventListener('change', e => {
-    datosBusqueda.maximo = e.target.value;
+    datosBusqueda.maximo = parseInt(e.target.value);
 
     filtrarAuto();
 });
 
 minimo.addEventListener('change', e => {
-    datosBusqueda.minimo = e.target.value;
+    datosBusqueda.minimo = parseInt(e.target.value);
 
     filtrarAuto();
 });
@@ -121,7 +121,7 @@ function llenarSelect() {
 
 //Funcion que filtra en base a la busqueda
 function filtrarAuto() {
-    const resultado = autos.filter( filtrarMarca ).filter( filtrarYear ).filter( filtrarMinimo).filter( filtrarMaximo).filter(filtrarPuertas).filter(filtrarTransmision).filter(filtrarColor);
+    const resultado = autos.filter( filtrarMarca ).filter( filtrarYear ).filter( filtrarMinimo).filter( filtrarMaximo).filter(filtrarPuertas).filter(filtrarTransmision).filter(filtrarColor)
 
    
     if(resultado.length) {
@@ -185,7 +185,7 @@ function filtrarPuertas(auto) {
 
 function filtrarTransmision(auto) {
     const { transmision } = datosBusqueda;
-    if(puertas) {
+    if(transmision) {
         return auto.transmision === transmision;
     }
     return auto; 
@@ -193,7 +193,7 @@ function filtrarTransmision(auto) {
 
 function filtrarColor(auto) {
     const { color } = datosBusqueda;
-    if(puertas) {
+    if(color) {
         return auto.color === color;
     }
     return auto; 
